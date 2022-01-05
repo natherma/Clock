@@ -1,32 +1,32 @@
 // function to get current time
 const getCurrentTime = () =>
 {
+
 let time = new Date();
+// To check Am or Pm
 function amOrPm()
 {
-     return time.getHours()-12>=1 ? 'Pm':'Am';
+     return (time.getHours()-12>=0&&time.getHours()-12<12)? 'PM':'AM';
 }
 let  amPm = amOrPm();
+
+// to covert 24 hours into 12hours
 function properHour(amPm)
 {
-   return amPm==="Am" ? time.getHours():time.getHours()-12
+   return amPm==="AM" ? time.getHours():time.getHours()-12
 }
 let currentHour = properHour(amPm);
 
-
+// object with current/proper Time
 let currentTime = {
     hour:currentHour,   
     minute:time.getMinutes(),
     second:time.getSeconds(),
-    amOrPm:amPm
+    amOrPm:amPm,
 };
 
 return currentTime
 }
-
-
-
-console.log(getCurrentTime());
 
 // greetings
 let greeting = 
@@ -46,13 +46,23 @@ let greeting =
     
 }
 
+// greet selector function
+let greetSelector = () => 
+{
+    
+}
+
+
+// Dom Selector
 let greet = document.querySelector('.greeting');
 let subGreet =  document.querySelector('.subGreeting');
 let clock =  document.querySelector('.clock');
 
-// console.log(getCurrentTime());
-// setInterval(()=>{
-//     console.log(getCurrentTime());
-// },999)
+
+
+clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurrentTime().second}  ${getCurrentTime().amOrPm}`;
+setInterval(()=>{
+    clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurrentTime().second} ${getCurrentTime().amOrPm}`;
+},999)
 
 
