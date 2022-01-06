@@ -12,24 +12,62 @@
 
 /* colors */
 :root {
-  --morningSky: #d7e8fd;
-  --afterNoonSky: #fcd14d;
-  --eveningSky: #474a57;
-  --nightSky: rgb(42, 42, 53);
+  --nightSky: #0a2342;
   --white: #fafdf6;
 }
 
 /* style for main  */
 
 body {
-  background-color: var(--morningSky);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+body.morning {
+  background: linear-gradient(
+    to right,
+    rgba(161, 196, 253, 0.5),
+    rgba(194, 233, 251, 0.5)
+  );
+  color: black;
+}
+body.afternoon {
+  background-color: #fbb034;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+  color: black;
+}
+body.evening {
+  background-color: #f9c5d1;
+  background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
+  color: var(--white);
+}
+body.night {
+  background: url(http://www.script-tutorials.com/demos/360/images/stars.png)
+    repeat top center;
+  z-index: 0;
+  background-color: var(--nightSky);
+  color: var(--white);
+}
 
+.greeting {
+  font-size: 3rem;
+}
 .clock {
-  font-size: 5rem;
+  font-size: 2.5rem;
   margin-top: auto;
+}
+
+.img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10rem;
+  height: 10rem;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    text-align: center;
+  }
 }

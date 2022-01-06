@@ -1,21 +1,30 @@
-// function to get current time
-const getCurrentTime = () =>
-{
 
-let time = new Date();
-// To check Am or Pm
-function amOrPm()
+// Dom Selector
+let greet = document.querySelector('.greeting');
+let subGreet =  document.querySelector('.subGreeting');
+let clock =  document.querySelector('.clock');
+let body = document.querySelector('body');
+
+// To check AM or PM
+function amOrPm(time)
 {
      return (time.getHours()-12>=0&&time.getHours()-12<12)? 'PM':'AM';
 }
-let  amPm = amOrPm();
 
 // to covert 24 hours into 12hours
-function properHour(amPm)
+function properHour(amPm,time)
 {
    return amPm==="AM" ? time.getHours():time.getHours()-12
 }
-let currentHour = properHour(amPm);
+
+// function to get current time
+const getCurrentTime = () =>
+{
+// Date inbuild API
+let time = new Date();
+
+let  amPm = amOrPm(time);
+let currentHour = properHour(amPm,time);
 
 // object with current/proper Time
 let currentTime = {
@@ -49,20 +58,38 @@ let greeting =
 // greet selector function
 let greetSelector = () => 
 {
-    
+    let greetValue;
+   if((getCurrentTime().hour>=6&&getCurrentTime().hour<12)&&getCurrentTime().amOrPm==='AM')
+   {
+       greetValue =  greeting.morning
+       body.classList.add('morning')
+   }
+   else if((getCurrentTime().hour>=4&&getCurrentTime().hour<9)&&getCurrentTime().amOrPm==='PM')
+   {
+        greetValue = greeting.evening
+        body.classList.add('evening')
+        
+   }
+   else if((getCurrentTime().hour===12||getCurrentTime().hour<4)&&getCurrentTime().amOrPm==='PM')
+   {
+      greetValue =  greeting.afternoon
+      body.classList.add('afternoon')
+   }
+   else
+   {
+        greetValue = greeting.night 
+        body.classList.add('night')
+   }
+   return greetValue
+
 }
-
-
-// Dom Selector
-let greet = document.querySelector('.greeting');
-let subGreet =  document.querySelector('.subGreeting');
-let clock =  document.querySelector('.clock');
-
-
 
 clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurrentTime().second}  ${getCurrentTime().amOrPm}`;
 setInterval(()=>{
     clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurrentTime().second} ${getCurrentTime().amOrPm}`;
+    greet.innerHTML = greetSelector().greeting;
+    subGreet.innerHTML = greetSelector().subGreeting
+     
 },999)
 
 
