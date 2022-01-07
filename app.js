@@ -3,6 +3,7 @@
 let greet = document.querySelector('.greeting');
 let subGreet =  document.querySelector('.subGreeting');
 let clock =  document.querySelector('.clock');
+let img = document.querySelector('img');
 let body = document.querySelector('body');
 
 // To check AM or PM
@@ -62,23 +63,27 @@ let greetSelector = () =>
    if((getCurrentTime().hour>=6&&getCurrentTime().hour<12)&&getCurrentTime().amOrPm==='AM')
    {
        greetValue =  greeting.morning
-       body.classList.add('morning')
+       body.classList.add('morning');
+       img.src="Assests/2442223633.png";
    }
-   else if((getCurrentTime().hour>=4&&getCurrentTime().hour<9)&&getCurrentTime().amOrPm==='PM')
+   else if((getCurrentTime().hour>=6&&getCurrentTime().hour<9)&&getCurrentTime().amOrPm==='PM')
    {
         greetValue = greeting.evening
-        body.classList.add('evening')
+        body.classList.add('evening');
+        img.src = "Assests/png-clipart-night-sky-star-moon.png";
         
    }
-   else if((getCurrentTime().hour===12||getCurrentTime().hour<4)&&getCurrentTime().amOrPm==='PM')
+   else if((getCurrentTime().hour===12||getCurrentTime().hour<6)&&getCurrentTime().amOrPm==='PM')
    {
       greetValue =  greeting.afternoon
-      body.classList.add('afternoon')
-   }
+      body.classList.add('afternoon');
+      img.src="Assests/2442223633.png";
+     }
    else
    {
-        greetValue = greeting.night 
-        body.classList.add('night')
+        greetValue = greeting.night ;
+        body.classList.add('night');
+        img.src = "Assests/png-clipart-night-sky-star-moon.png";
    }
    return greetValue
 
