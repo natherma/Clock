@@ -5,6 +5,11 @@ let subGreet =  document.querySelector('.subGreeting');
 let clock =  document.querySelector('.clock');
 let img = document.querySelector('img');
 let body = document.querySelector('body');
+let date = document.querySelector('.date');
+
+// Date inbuild API
+let time = new Date();
+
 
 // To check AM or PM
 function amOrPm(time)
@@ -26,6 +31,8 @@ let time = new Date();
 
 let  amPm = amOrPm(time);
 let currentHour = properHour(amPm,time);
+
+
 
 // object with current/proper Time
 let currentTime = {
@@ -93,8 +100,8 @@ clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurr
 setInterval(()=>{
     clock.innerHTML = `${getCurrentTime().hour}:${getCurrentTime().minute}:${getCurrentTime().second} ${getCurrentTime().amOrPm}`;
     greet.innerHTML = greetSelector().greeting;
-    subGreet.innerHTML = greetSelector().subGreeting
-     
+    subGreet.innerHTML = greetSelector().subGreeting;
+    date.innerHTML = `${time.getDate()}/${time.getMonth()+1}/${time.getFullYear()}`; 
 },999)
 
 

@@ -58,6 +58,13 @@ body.night {
   margin-top: auto;
 }
 
+.date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem;
+}
+
 .img {
   position: absolute;
   bottom: 0;
