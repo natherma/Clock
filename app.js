@@ -70,7 +70,7 @@ let greetSelector = () =>
    {
         greetValue = greeting.evening
         body.classList.add('evening');
-        img.src = "Assests/png-clipart-night-sky-star-moon.png";
+        img.src = "Assests/moon.png";
         
    }
    else if((getCurrentTime().hour===12||getCurrentTime().hour<6)&&getCurrentTime().amOrPm==='PM')
@@ -83,7 +83,7 @@ let greetSelector = () =>
    {
         greetValue = greeting.night ;
         body.classList.add('night');
-        img.src = "Assests/png-clipart-night-sky-star-moon.png";
+        img.src = "Assests/moon.png";
    }
    return greetValue
 
